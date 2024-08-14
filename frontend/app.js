@@ -26,8 +26,8 @@ arr.push(6); //here there is no push propertie for arr but there is prototype ex
 // console.log(arr.__proto__); // arr of prototype 
 //changing definition of push in prototype
 arr.__proto__.push = (n) => {
-        console.log(`Pushing Number ${n} to arr`);
-    } //push is now changed for copy it's not actual working for pushed elements in arr
+    console.log(`Pushing Number ${n} to arr`);
+} //push is now changed for copy it's not actual working for pushed elements in arr
 
 //Outputs 
 // Array(5) [ 2, 3, 4, 5, 6 ]
@@ -62,3 +62,37 @@ const student4 = {
 
 student3.getmsg === student4.getmsg; // it will show false bcoz still it is not prototype method but after using prototype it reference to same memorry let'se see altough are not same
 "abc" === "abc"; //it will show false also
+
+
+//factory function :- it is a simple function which make object efficiently but we don't use later bcoz it takes diff indivisual copy for diff objects
+function StudentMaker(name, age, branch) {
+    const student = {
+        name: name,
+        age: age,
+        branch: branch,
+        printName() {
+            console.log(`Student name is ${this.name}`);
+        }
+    };
+    return student; //this function make student obj efficiently but it make diff copies let's see with comparing
+}
+let s1 = StudentMaker("Anil", 21, "CSE");
+let s2 = StudentMaker("Nitesh", 20, "CSE");
+
+//while comparing 
+s1 === s2; // it will show false bcoz diff copies taken
+
+//we have mostly used and efficient operator to create object that is new operator
+//Constructor :- Doesn't return any things and start with capital letter for 
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+let s3 = new Person("Anil", 23);
+let s4 = new Person("Guddu", 25);
+
+Person.prototype.msg = function () {
+    console.log(`Person name is ${this.name}`);
+}
+
