@@ -94,5 +94,7 @@ let s4 = new Person("Guddu", 25);
 
 Person.prototype.msg = function () {
     console.log(`Person name is ${this.name}`);
-}
+} //this method will set to the prototype so while accesing it is same for objs
+
+s3.msg() === s4.msg() ; //it's msg value is diff although it will show 'true' bcoz we made that prototype for all both obj 
 
