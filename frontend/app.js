@@ -85,16 +85,90 @@ s1 === s2; // it will show false bcoz diff copies taken
 //we have mostly used and efficient operator to create object that is new operator
 //Constructor :- Doesn't return any things and start with capital letter for 
 
-function Person(name, age) {
-    this.name = name;
-    this.age = age;
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// let s3 = new Person("Anil", 23);
+// let s4 = new Person("Guddu", 25);
+
+// Person.prototype.msg = function () {
+//     console.log(`Person name is ${this.name}`);
+// } 
+//this method will set to the prototype so while accesing it is same for objs
+
+//s3.msg() === s4.msg() ; //it's msg value is diff although it will show 'true' bcoz we made that prototype for all both obj 
+
+//One more better way is "Classes" will be used as better way than above 
+//Classes:- imagine class as template to make objects 
+//Constructor keyword is used to define that this function is Constructor like
+
+
+//We use a constructor in a class to initialize the object's properties when an instance of the class is created. The constructor sets up the initial state of the object, ensuring that it starts with the necessary values and configuration.
+
+//achieving same results using class
+
+class Person {
+    constructor(name, age, branch) {
+        this.name = name;
+        this.age = age;
+        this.branch = branch;
+    }
+    msg() {
+        console.log(`Person name is ${this.name}`);
+    } //auto this functon added as prototype 
 }
-let s3 = new Person("Anil", 23);
-let s4 = new Person("Guddu", 25);
+//creating objects is same process but one advantage is we class auto add prototype 
 
-Person.prototype.msg = function () {
-    console.log(`Person name is ${this.name}`);
-} //this method will set to the prototype so while accesing it is same for objs
+//check console : Person there auto msg is exist in prototype we don't have to manually set prototype
 
-s3.msg() === s4.msg() ; //it's msg value is diff although it will show 'true' bcoz we made that prototype for all both obj 
 
+
+
+//INHERITANCE:- inheritance is used to avoid writing repeating codes it is concepts that allows one child class to accesss parent or base class properties
+// extends is used to inherit while super is used to call parent or base class in child so that parent properties can be accessed 
+
+//parent or base class that is simillar for all mammal
+class mammal {
+    constructor(name, weight, legs) {
+        this.name = name;
+        this.weight = weight;
+        this.legs = legs;
+        this.type = "warm-blooded";
+    }
+} //this mammal parent is mostly common for all mammal so it can extend on many other mammal type
+
+class dog extends mammal {
+    constructor(name, weight, legs) {
+        super(name, weight, legs); //mammal class called
+    }
+    barks() {
+        console.log("Whooo...!");
+    }
+}
+
+class cat extends mammal {
+    constructor(name, weight, legs) {
+        super(name, weight, legs); //mammal class called
+    }
+    meow() {
+        console.log("meoww...!");
+    }
+}
+
+
+//console outputs :-
+//let d1 = new dog("tonny",18,4)
+//d1
+//Object { name: "tonny", weight: 18, legs: 4, type: "warm-blooded" }
+
+// d1.type
+// "warm-blooded"
+// d1.name
+// "tonny"
+// let c1 = new cat("kity",8,4)
+// c1
+// Object { name: "kity", weight: 8, legs: 4, type: "warm-blooded" }
+
+// c1.legs
+//4 
